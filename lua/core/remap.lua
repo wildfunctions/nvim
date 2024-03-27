@@ -9,3 +9,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "<leader>y", "\"+y")
+
+vim.keymap.set("n", "gr", function() require("telescope.builtin").lsp_references() end, {noremap = true, silent = true})
+
+vim.keymap.set("n", "<leader>rn", "<cmd>lua RenameSymbol()<CR>", {noremap = true, silent = true})
+function RenameSymbol()
+    vim.lsp.buf.rename()
+end
