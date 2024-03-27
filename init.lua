@@ -15,7 +15,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  {
     'github/copilot.vim',
+    config = function()
+      vim.cmd("Copilot disable")
+    end
+  },
 	'neovim/nvim-lspconfig',
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/nvim-cmp',
