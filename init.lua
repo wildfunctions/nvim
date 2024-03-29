@@ -21,22 +21,23 @@ require("lazy").setup({
       vim.cmd("Copilot disable")
     end
   },
-	'neovim/nvim-lspconfig',
-	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/nvim-cmp',
-	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.6',
-		dependencies = { 'nvim-lua/plenary.nvim' }
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			vim.cmd('colorscheme rose-pine')
-		end
-	},
-	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-	'theprimeagen/harpoon',
-	'williamboman/mason.nvim',
-	'williamboman/mason-lspconfig.nvim'
+  'neovim/nvim-lspconfig',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/nvim-cmp',
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      vim.cmd('colorscheme rose-pine')
+    end
+  },
+  {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+  'theprimeagen/harpoon',
+  'tpope/vim-fugitive',
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim'
 })
