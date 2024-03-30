@@ -37,6 +37,7 @@ require("lazy").setup({
   },
   {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
   'theprimeagen/harpoon',
+  'tpope/vim-commentary',
   'tpope/vim-fugitive',
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim'
