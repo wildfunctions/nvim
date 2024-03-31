@@ -34,7 +34,10 @@ require("lazy").setup({
   {
     'github/copilot.vim',
     config = function()
-      vim.cmd("Copilot disable")
+      if vim.loop.os_uname().sysname == "Darwin" then
+        print("Disabling Copiot")
+        vim.cmd("Copilot disable")
+      end
     end
   },
   'neovim/nvim-lspconfig',
