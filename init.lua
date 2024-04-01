@@ -30,6 +30,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+--- Get the root directory of the project by using the git command
+--- If the git command fails then use the current working directory
+---@return string | nil
+local function get_root_dir()
+  local cwd = vim.loop.cwd()
+  local root = vim.fn.system("git rev-parse --show-toplevel")
+  if vim.v.shell_error == 0 and root ~= nil then
+    local path = string.gsub(root, "\n", "")
+    return path
+  end
+  return cwd
+end
+
 require("lazy").setup({
   {
     'github/copilot.vim',
@@ -55,7 +68,20 @@ require("lazy").setup({
     end
   },
   {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
-  'theprimeagen/harpoon',
+  {
+    "theprimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      settings = {
+        save_on_toggle = false,
+        sync_on_ui_close = false,
+        key = function()
+          return get_root_dir()
+        end,
+      },
+    },
+  },
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
   'williamboman/mason.nvim',

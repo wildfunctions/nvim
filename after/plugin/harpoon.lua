@@ -1,8 +1,10 @@
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
+local harpoon = require("harpoon")
 
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<leader>r", mark.rm_file)
-vim.keymap.set("n", "<leader>e", ui.toggle_quick_menu)
-vim.keymap.set("n", "<leader>n", ui.nav_next)
-vim.keymap.set("n", "<leader>p", ui.nav_prev)
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+--
+vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>n", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<leader>p", function() harpoon:list():next() end)
