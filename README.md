@@ -2,11 +2,17 @@
 
 ## Dependencies
 
-// allows for "+y, "+p
+```bash
+# allows for "+y, "+p
 sudo apt install vim-gtk3
+```
 
-// optimized recursive grep
+```bash
+# optimized recursive grep
 sudo apt install ripgrep 
+```
 
-// WSL yank
+```bash
+# WSL yank
 https://github.com/equalsraf/win32yank
+```

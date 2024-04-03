@@ -70,6 +70,7 @@ require("lazy").setup({
   {"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
   {
     "theprimeagen/harpoon",
+    commit = 'a38be6e0dd4c6db66997deab71fc4453ace97f9c',
     branch = "harpoon2",
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
@@ -81,6 +82,11 @@ require("lazy").setup({
         end,
       },
     },
+  },
+  {
+    "wildfunctions/marlinspike",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
   },
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
