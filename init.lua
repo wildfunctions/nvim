@@ -16,6 +16,22 @@ if vim.fn.executable('win32yank.exe') == 1 then
   }
 end
 
+if vim.loop.os_uname().sysname == "Darwin" then
+  vim.opt.clipboard = 'unnamedplus'
+  vim.g.clipboard = {
+    name = 'pbcopy',
+    copy = {
+      ['+'] = 'pbcopy',
+      ['*'] = 'pbcopy',
+    },
+    paste = {
+      ['+'] = 'pbpaste',
+      ['*'] = 'pbpaste',
+    },
+    cache_enabled = 1,
+  }
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
