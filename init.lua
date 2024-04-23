@@ -1,37 +1,5 @@
 require("core")
 
-if vim.fn.executable('win32yank.exe') == 1 then
-  vim.opt.clipboard = 'unnamedplus'
-  vim.g.clipboard = {
-    name = 'win32yank',
-    copy = {
-      ['+'] = 'win32yank.exe -i --crlf',
-      ['*'] = 'win32yank.exe -i --crlf',
-    },
-    paste = {
-      ['+'] = 'win32yank.exe -o --lf',
-      ['*'] = 'win32yank.exe -o --lf',
-    },
-    cache_enabled = 0,
-  }
-end
-
-if vim.loop.os_uname().sysname == "Darwin" then
-  vim.opt.clipboard = 'unnamedplus'
-  vim.g.clipboard = {
-    name = 'pbcopy',
-    copy = {
-      ['+'] = 'pbcopy',
-      ['*'] = 'pbcopy',
-    },
-    paste = {
-      ['+'] = 'pbpaste',
-      ['*'] = 'pbpaste',
-    },
-    cache_enabled = 1,
-  }
-end
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -46,8 +14,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---- Get the root directory of the project by using the git command
---- If the git command fails then use the current working directory
 ---@return string | nil
 local function get_root_dir()
   local cwd = vim.loop.cwd()
@@ -113,3 +79,38 @@ require("lazy").setup({
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim'
 })
+
+if vim.fn.executable('win32yank.exe') == 1 then
+  vim.opt.rtp:prepend("/mnt/c/Users/britt/dev/eyes.nvim")
+
+  vim.opt.clipboard = 'unnamedplus'
+  vim.g.clipboard = {
+    name = 'win32yank',
+    copy = {
+      ['+'] = 'win32yank.exe -i --crlf',
+      ['*'] = 'win32yank.exe -i --crlf',
+    },
+    paste = {
+      ['+'] = 'win32yank.exe -o --lf',
+      ['*'] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+end
+
+if vim.loop.os_uname().sysname == "Darwin" then
+  vim.opt.clipboard = 'unnamedplus'
+  vim.g.clipboard = {
+    name = 'pbcopy',
+    copy = {
+      ['+'] = 'pbcopy',
+      ['*'] = 'pbcopy',
+    },
+    paste = {
+      ['+'] = 'pbpaste',
+      ['*'] = 'pbpaste',
+    },
+    cache_enabled = 1,
+  }
+end
+
