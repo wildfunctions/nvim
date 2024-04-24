@@ -81,7 +81,7 @@ require("lazy").setup({
 })
 
 if vim.fn.executable('win32yank.exe') == 1 then
-  vim.opt.rtp:prepend("/mnt/c/Users/britt/dev/eyes.nvim")
+  vim.opt.rtp:prepend("/mnt/c/Users/britt/dev/myeyeshurt")
 
   vim.opt.clipboard = 'unnamedplus'
   vim.g.clipboard = {
