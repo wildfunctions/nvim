@@ -81,7 +81,7 @@ require("lazy").setup({
 })
 
 if vim.fn.executable('win32yank.exe') == 1 then
-  vim.opt.rtp:prepend("/mnt/c/Users/britt/dev/myeyeshurt")
+  -- vim.opt.rtp:prepend("/mnt/c/Users/britt/dev/myeyeshurt")
 
   vim.opt.clipboard = 'unnamedplus'
   vim.g.clipboard = {
@@ -99,7 +99,7 @@ if vim.fn.executable('win32yank.exe') == 1 then
 end
 
 if vim.loop.os_uname().sysname == "Darwin" then
-  vim.opt.rtp:prepend("~/dev/myeyeshurt")
+  -- vim.opt.rtp:prepend("~/dev/myeyeshurt")
 
   vim.opt.clipboard = 'unnamedplus'
   vim.g.clipboard = {
