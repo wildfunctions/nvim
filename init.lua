@@ -74,6 +74,11 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
+  {
+    "wildfunctions/myeyeshurt",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
   'williamboman/mason.nvim',
