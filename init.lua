@@ -1,5 +1,8 @@
 require("core")
 
+local devPluginName = nil
+-- local devPluginName = "myeyeshurt"
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -76,8 +79,10 @@ require("lazy").setup({
   },
   {
     "wildfunctions/myeyeshurt",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    -- branch = "fix-session-tracking",
+    opts = {
+      -- minutesUntilRest = 2
+    },
   },
   'tpope/vim-commentary',
   'tpope/vim-fugitive',
@@ -86,7 +91,9 @@ require("lazy").setup({
 })
 
 if vim.fn.executable('win32yank.exe') == 1 then
-  -- vim.opt.rtp:prepend("/mnt/c/Users/britt/dev/myeyeshurt")
+  if devPluginName then
+    vim.opt.rtp:prepend("/mnt/c/Users/britt/dev/" .. devPluginName)
+  end
 
   vim.opt.clipboard = 'unnamedplus'
   vim.g.clipboard = {
@@ -104,7 +111,9 @@ if vim.fn.executable('win32yank.exe') == 1 then
 end
 
 if vim.loop.os_uname().sysname == "Darwin" then
-  -- vim.opt.rtp:prepend("~/dev/myeyeshurt")
+  if devPluginName then
+    vim.opt.rtp:prepend("~/dev/" .. devPluginName)
+  end
 
   vim.opt.clipboard = 'unnamedplus'
   vim.g.clipboard = {
