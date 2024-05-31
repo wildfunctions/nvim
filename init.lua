@@ -130,3 +130,23 @@ if vim.loop.os_uname().sysname == "Darwin" then
   }
 end
 
+if vim.loop.os_uname().sysname == "Linux" then
+  --sudo apt install xclip
+  if devPluginName then
+    vim.opt.rtp:prepend("~/dev/" .. devPluginName)
+  end
+
+  vim.opt.clipboard = 'unnamedplus'
+  vim.g.clipboard = {
+    name = 'xclip',
+    copy = {
+      ['+'] = 'xclip -selection clipboard -in',
+      ['*'] = 'xclip -selection primary -in',
+    },
+    paste = {
+      ['+'] = 'xclip -selection clipboard -out',
+      ['*'] = 'xclip -selection primary -out',
+    },
+    cache_enabled = 0,
+  }
+end
